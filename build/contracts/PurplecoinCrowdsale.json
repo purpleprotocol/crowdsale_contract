@@ -32093,6 +32093,12 @@
     "version": "0.4.24+commit.e67f0147.Emscripten.clang"
   },
   "networks": {
+    "1": {
+      "events": {},
+      "links": {},
+      "address": "0x8B4308607446a75396Ebf32DcEa58e451F023722",
+      "transactionHash": "0x57d5014822a8cab34c860b06bdb6033f3b6ee3ffb0139752582d003abe383168"
+    },
     "5": {
       "events": {
         "0x655bdeff4018514bfb601a9643e0fa6de8743959e274be4f8271d532c03cbd24": {
@@ -32422,10 +32428,150 @@
       "links": {},
       "address": "0x8cBD4273AADDe75456f31F4979eA39b4b6C17d88",
       "transactionHash": "0xc86e83ed783878730d96c1df6ee52692551dc362f13527ae58a64aedbc094f8c"
+    },
+    "1673793199975": {
+      "events": {
+        "0x4aaa918a6038190af8d4a166a2a7be78c04f9d0cc90aed882354d6933a9689b7": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "amount",
+              "type": "uint256"
+            }
+          ],
+          "name": "EthTransferred",
+          "type": "event"
+        },
+        "0xdfd111cde119aaaf3e6ca7bc9aa3ef8526ec42bc6a05289c59410df8263b1145": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "beneficiary",
+              "type": "address"
+            }
+          ],
+          "name": "PurchaseCancelled",
+          "type": "event"
+        },
+        "0x01857893712f549081848186fed1463c4d3880a5dd67ab6a47916bbc077cebce": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "beneficiary",
+              "type": "address"
+            }
+          ],
+          "name": "KycAuthorised",
+          "type": "event"
+        },
+        "0x63f66204680e55f6232fbba109063e889b9fd1d4fec00117a4984145e7175972": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "newWave",
+              "type": "uint256"
+            }
+          ],
+          "name": "IncrementWave",
+          "type": "event"
+        },
+        "0x36bf5aa3964be01dbd95a0154a8930793fe68353bdc580871ffb2c911366bbc7": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "beneficiary",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "amount",
+              "type": "uint256"
+            }
+          ],
+          "name": "TokenMint",
+          "type": "event"
+        },
+        "0x9270cc390c096600a1c17c44345a1ba689fafd99d97487b10cfccf86cf731836": {
+          "anonymous": false,
+          "inputs": [],
+          "name": "CrowdsaleFinalized",
+          "type": "event"
+        },
+        "0xec26397d55afb0d1d41d8dbc288027ddb7880e323e629246dc0aecbe1c41709a": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "purchaser",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "beneficiary",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "authorised",
+              "type": "bool"
+            },
+            {
+              "indexed": false,
+              "name": "value",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "amount",
+              "type": "uint256"
+            }
+          ],
+          "name": "TokenPurchase",
+          "type": "event"
+        },
+        "0xf8df31144d9c2f0f6b59d69b8b98abd5459d07f2742c4df920b25aae33c64820": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "previousOwner",
+              "type": "address"
+            }
+          ],
+          "name": "OwnershipRenounced",
+          "type": "event"
+        },
+        "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "OwnershipTransferred",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x66876a1Cc456C00737013FEfc1DdbDeC2D173Afd",
+      "transactionHash": "0x2399d97e83745a7edd59236f0b438f7e6a715e19f3763a15373db5a89ff6892a"
     }
   },
   "schemaVersion": "3.4.11",
-  "updatedAt": "2023-01-14T23:58:26.708Z",
+  "updatedAt": "2023-01-16T01:50:50.711Z",
+  "networkType": "ethereum",
   "devdoc": {
     "methods": {
       "authorise(address)": {

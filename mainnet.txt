@@ -1,0 +1,62 @@
+Starting migrations...
+======================
+> Network name:    'mainnet'
+> Network id:      1
+> Block gas limit: 30000000 (0x1c9c380)
+
+
+1_initial_migration.js
+======================
+
+   Deploying 'Migrations'
+   ----------------------
+   > transaction hash:    0x998aac9606fe7f11d572944b300d930b50603b7719f169c14439298331e6e509
+   > Blocks: 21           Seconds: 252
+   > contract address:    0xbdbcDe04730Eb8392D7a2B89790BC6084A6e8Ee3
+   > block number:        16416174
+   > block timestamp:     1673833751
+   > account:             0xA772C025abf455E16c9E857c9C19Ba56AC032782
+   > balance:             0.133198040472196779
+   > gas used:            239894 (0x3a916)
+   > gas price:           13.89700439 gwei
+   > value sent:          0 ETH
+   > total cost:          0.00333380797113466 ETH
+
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:     0.00333380797113466 ETH
+
+
+2_deploy_contracts.js
+=====================
+-----> rate:        1150
+-----> wallet:      0x130fCeAD624C57aB46EF073bd1a940ACF8Bf2c85
+-----> cap:         1.13997e+26
+-----> waves caps:  [ 37999000, 37999000, 37999000 ]
+-----> bonuses:     [ 200, 100, 0 ]
+
+   Deploying 'PurplecoinCrowdsale'
+   -------------------------------
+   > transaction hash:    0x57d5014822a8cab34c860b06bdb6033f3b6ee3ffb0139752582d003abe383168
+   > Blocks: 3            Seconds: 32
+   > contract address:    0x8B4308607446a75396Ebf32DcEa58e451F023722
+   > block number:        16416178
+   > block timestamp:     1673833799
+   > account:             0xA772C025abf455E16c9E857c9C19Ba56AC032782
+   > balance:             0.068186422544324609
+   > gas used:            4632355 (0x46af23)
+   > gas price:           13.89700439 gwei
+   > value sent:          0 ETH
+   > total cost:          0.06437585777103845 ETH
+
+-----> Token Address 0xC266e1fDf7A0C6494ABfbc534fB977b92C7F27d9
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:     0.06437585777103845 ETH
+
+Summary
+=======
+> Total deployments:   2
+> Final cost:          0.06770966574217311 ETH
