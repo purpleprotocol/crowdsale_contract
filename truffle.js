@@ -17,14 +17,14 @@ module.exports = {
             },
             network_id: '5', // eslint-disable-line camelcase
             gas: 4800000,
-            gasPrice: 300000000,
+            gasPrice: 4974472480,
         },
         mainnet: {
             provider: () => {
                 return new PrivateKeyProvider(process.env.PRIVATE_KEY, 'https://mainnet.infura.io/v3/' + process.env.INFURA_API_KEY)
             },
             gas: 4800000,
-            gasPrice: 13897004390,
+            gasPrice: 11897004390,
             network_id: '1'
         }
     },

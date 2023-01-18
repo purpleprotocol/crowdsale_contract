@@ -78,9 +78,9 @@ contract PurplecoinCrowdsale is Ownable {
     uint256 public totalSoldPsats;
 
     // -----------------------
+    uint256 public tokensCap;
+    uint256 public individualTokensCap;
     uint256 private bonus;
-    uint256 private tokensCap;
-    uint256 private individualTokensCap;
     uint256[] private WAVE_CAPS;
     uint256[] private WAVE_BONUSES;
     bool public isFinalized;
@@ -105,7 +105,7 @@ contract PurplecoinCrowdsale is Ownable {
         _waveCaps[0] = _waveCaps[0] * decimals;
         _waveCaps[1] = _waveCaps[1] * decimals;
         _waveCaps[2] = _waveCaps[2] * decimals;
-        individualTokensCap = 15000 * decimals; // Max 15,000 XPU per person 
+        individualTokensCap = 50000 * decimals; // Max 50,000 XPU per person 
         rate = _rate;
         token = createTokenContract();
         WAVE_CAPS = _waveCaps;
@@ -391,7 +391,7 @@ contract PurplecoinCrowdsale is Ownable {
     {
         uint256 tokenAmount = _getTokenAmount(weiAmount);
         require(beneficiary != address(0));
-        require(weiAmount >= 10000000000000000); // 0.01 ETH minimum purchase
+        require(weiAmount >= 250000000000000000); // 0.25 ETH minimum purchase
         require(!isFinalized);
         require(!banned[beneficiary]);
         require(_balances[beneficiary].add(pending_psats[beneficiary]).add(tokenAmount) <= individualTokensCap); // Individual cap
