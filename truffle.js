@@ -7,7 +7,7 @@ module.exports = {
         development: {
             host: "localhost",
             port: 8545,
-            gas: 4800000,
+            gas: 4900000,
             gasPrice: 65000000000,
             network_id: "*" // Match any network id
         },
@@ -16,15 +16,15 @@ module.exports = {
               return new PrivateKeyProvider(process.env.PRIVATE_KEY, 'https://goerli.infura.io/v3/' + process.env.INFURA_API_KEY)
             },
             network_id: '5', // eslint-disable-line camelcase
-            gas: 4800000,
+            gas: 4900000,
             gasPrice: 4974472480,
         },
         mainnet: {
             provider: () => {
                 return new PrivateKeyProvider(process.env.PRIVATE_KEY, 'https://mainnet.infura.io/v3/' + process.env.INFURA_API_KEY)
             },
-            gas: 4667000,
-            gasPrice: 12297004390,
+            gas: 4900000,
+            gasPrice: 14797004390,
             network_id: '1'
         }
     },

@@ -69,6 +69,9 @@ contract PurplecoinCrowdsale is Ownable {
     // Balances
     mapping(address => uint256) private _balances;
 
+    // Wei raised per address
+    mapping(address => uint256) private _wei_raised_per_address;
+
     MathHelp math = new MathHelp();
 
     // Amount sold, refunded, and in escrow
@@ -399,7 +402,7 @@ contract PurplecoinCrowdsale is Ownable {
     {
         uint256 tokenAmount = _getTokenAmount(weiAmount);
         require(beneficiary != address(0));
-        require(weiAmount >= 250000000000000000); // 0.25 ETH minimum purchase
+        require(_wei_raised_per_address[beneficiary].add(pending_wei[beneficiary]).add(weiAmount) >= 250000000000000000); // 0.25 ETH minimum purchase
         require(!isFinalized);
         require(!banned[beneficiary]);
         require(_balances[beneficiary].add(pending_psats[beneficiary]).add(tokenAmount) <= individualTokensCap); // Individual cap
@@ -457,6 +460,7 @@ contract PurplecoinCrowdsale is Ownable {
     {
         if (kyc_authorised[_beneficiary]) {
             weiRaised = weiRaised.add(msg.value);
+            _wei_raised_per_address[_beneficiary] = _wei_raised_per_address[_beneficiary].add(msg.value);
             _balances[_beneficiary] = _balances[_beneficiary].add(_tokenAmount);
             totalSoldPsats = totalSoldPsats.add(_tokenAmount);
         } else {
@@ -474,7 +478,8 @@ contract PurplecoinCrowdsale is Ownable {
     // Forwards funds to the specified wallet by default
     function _forwardFunds(address _beneficiary) internal {
         if (kyc_authorised[_beneficiary]) {
-            weiRaised = weiRaised.add(pending_wei[_beneficiary]);
+            weiRaised = weiRaised.add(msg.value);
+            _wei_raised_per_address[_beneficiary] = _wei_raised_per_address[_beneficiary].add(msg.value);
             if (_shouldIncrementWave(currentWaveCap())) {
                 incrementWave();
             }
@@ -489,6 +494,7 @@ contract PurplecoinCrowdsale is Ownable {
     // Forwards funds to the specified wallet by default
     function _forwardPendingFunds(address _beneficiary) internal {
         weiRaised = weiRaised.add(pending_wei[_beneficiary]);
+        _wei_raised_per_address[_beneficiary] = _wei_raised_per_address[_beneficiary].add(pending_wei[_beneficiary]);
         totalWeiInEscrow = totalWeiInEscrow.sub(pending_wei[_beneficiary]);
         totalSoldPsats = totalSoldPsats.add(pending_psats[_beneficiary]);
         totalPsatsInEscrow = totalPsatsInEscrow.sub(pending_psats[_beneficiary]);
