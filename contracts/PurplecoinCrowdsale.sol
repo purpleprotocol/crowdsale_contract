@@ -76,7 +76,7 @@ contract PurplecoinCrowdsale is Ownable {
     uint256 public totalPsatsInEscrow;
     uint256 public totalWeiInEscrow;
     uint256 public totalSoldPsats;
-    uint256 private totalWeiInSettledEscrow;
+    uint256 public totalWeiInSettledEscrow;
 
     // -----------------------
     uint256 public tokensCap;
