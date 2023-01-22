@@ -406,7 +406,7 @@ contract PurplecoinCrowdsale is Ownable {
         require(!isFinalized);
         require(!banned[beneficiary]);
         require(_balances[beneficiary].add(pending_psats[beneficiary]).add(tokenAmount) <= individualTokensCap); // Individual cap
-        require(tokenAmount.add(totalSoldPsats) <= tokensCap);                                                   // Sale cap
+        require(tokenAmount.add(totalSoldPsats).add(totalPsatsInEscrow) <= tokensCap);                           // Sale cap
     }
 
     /**
