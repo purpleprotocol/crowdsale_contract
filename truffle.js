@@ -23,8 +23,8 @@ module.exports = {
             provider: () => {
                 return new PrivateKeyProvider(process.env.PRIVATE_KEY, 'https://mainnet.infura.io/v3/' + process.env.INFURA_API_KEY)
             },
-            gas: 4800000,
-            gasPrice: 11897004390,
+            gas: 4667000,
+            gasPrice: 12297004390,
             network_id: '1'
         }
     },

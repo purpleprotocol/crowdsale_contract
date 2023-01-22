@@ -8,24 +8,24 @@ Starting migrations...
 1_initial_migration.js
 ======================
 
-   Deploying 'Migrations'
+   Replacing 'Migrations'
    ----------------------
-   > transaction hash:    0x998aac9606fe7f11d572944b300d930b50603b7719f169c14439298331e6e509
-   > Blocks: 21           Seconds: 252
-   > contract address:    0xbdbcDe04730Eb8392D7a2B89790BC6084A6e8Ee3
-   > block number:        16416174
-   > block timestamp:     1673833751
+   > transaction hash:    0x64505f883f8573db072120e07561585225f64845580df33303eda716cc3fbcf7
+   > Blocks: 24           Seconds: 292
+   > contract address:    0x9E6aA0eea72f1956a31BdE69a4af62371d3158c2
+   > block number:        16436441
+   > block timestamp:     1674078071
    > account:             0xA772C025abf455E16c9E857c9C19Ba56AC032782
-   > balance:             0.133198040472196779
+   > balance:             0.05865863967323614
    > gas used:            239894 (0x3a916)
-   > gas price:           13.89700439 gwei
+   > gas price:           18.366522935 gwei
    > value sent:          0 ETH
-   > total cost:          0.00333380797113466 ETH
+   > total cost:          0.00440601865296889 ETH
 
    > Saving migration to chain.
    > Saving artifacts
    -------------------------------------
-   > Total cost:     0.00333380797113466 ETH
+   > Total cost:     0.00440601865296889 ETH
 
 
 2_deploy_contracts.js

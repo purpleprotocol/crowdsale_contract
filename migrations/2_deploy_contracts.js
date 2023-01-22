@@ -1,5 +1,5 @@
 const PurplecoinCrowdsale = artifacts.require("./../contracts/PurplecoinCrowdsale.sol");
-const parseConfig = require('./../test/helpers/parseConfig');
+const parseConfig = require('../test/helpers/parseConfig');
 
 function getWalletsForNetwork(network, accounts) {
     let wallets = [];

@@ -76,6 +76,7 @@ contract PurplecoinCrowdsale is Ownable {
     uint256 public totalPsatsInEscrow;
     uint256 public totalWeiInEscrow;
     uint256 public totalSoldPsats;
+    uint256 private totalWeiInSettledEscrow;
 
     // -----------------------
     uint256 public tokensCap;
@@ -274,6 +275,13 @@ contract PurplecoinCrowdsale is Ownable {
         banned[_beneficiary] = true;
     }
 
+    function clearWeiInSettledEscrow() public onlyOwner {
+        require(totalWeiInSettledEscrow > 0);
+        wallet.transfer(totalWeiInSettledEscrow);
+        emit EthTransferred(totalWeiInSettledEscrow);
+        totalWeiInSettledEscrow = 0;
+    }
+
 
     function mintTokens(address _beneficiary, uint256 tokens) internal {
         require(_beneficiary != 0x0);
@@ -470,8 +478,7 @@ contract PurplecoinCrowdsale is Ownable {
             if (_shouldIncrementWave(currentWaveCap())) {
                 incrementWave();
             }
-            wallet.transfer(msg.value);
-            emit EthTransferred(msg.value);
+            totalWeiInSettledEscrow = totalWeiInSettledEscrow.add(msg.value);
         } else {
             pending_wei[_beneficiary] = pending_wei[_beneficiary].add(msg.value);
             totalWeiInEscrow = totalWeiInEscrow.add(msg.value);
