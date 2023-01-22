@@ -321,10 +321,7 @@ contract PurplecoinCrowdsale is Ownable {
      */
     function authoriseMany(address[] _beneficiaries) external nonReentrant onlyOwner {
         for(uint256 i=0; i < _beneficiaries.length; i++) {
-            address _beneficiary = _beneficiaries[i];
-            require(pending[_beneficiary]);
-            emit KycAuthorised(_beneficiary);
-            _forwardPendingFunds(_beneficiary);
+            authorise(_beneficiaries[i]);
         }
     }
 
@@ -478,8 +475,6 @@ contract PurplecoinCrowdsale is Ownable {
     // Forwards funds to the specified wallet by default
     function _forwardFunds(address _beneficiary) internal {
         if (kyc_authorised[_beneficiary]) {
-            weiRaised = weiRaised.add(msg.value);
-            _wei_raised_per_address[_beneficiary] = _wei_raised_per_address[_beneficiary].add(msg.value);
             if (_shouldIncrementWave(currentWaveCap())) {
                 incrementWave();
             }
