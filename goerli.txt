@@ -10,13 +10,13 @@ Starting migrations...
 
    Replacing 'Migrations'
    ----------------------
-   > transaction hash:    0x83799ab5ad1f1d33bf216c7607c1d9c64f3046aeef6a9475de7224c298768d72
-   > Blocks: 26           Seconds: 448
-   > contract address:    0xa9DC0B6BEa709774356711fcDbe574536275C567
-   > block number:        8334547
-   > block timestamp:     1674074244
+   > transaction hash:    0x20c3ee5290dfc22c9226d388f7a31517821acfafd629b46e6eb61cdad99a8059
+   > Blocks: 0            Seconds: 8
+   > contract address:    0x4f1e5D6d2410C217797104AC93724609410dC039
+   > block number:        8364521
+   > block timestamp:     1674513264
    > account:             0xA772C025abf455E16c9E857c9C19Ba56AC032782
-   > balance:             0.192122540415728643
+   > balance:             0.242552736653113043
    > gas used:            239894 (0x3a916)
    > gas price:           4.97447248 gwei
    > value sent:          0 ETH
@@ -30,7 +30,7 @@ Starting migrations...
 
 2_deploy_contracts.js
 =====================
------> rate:        1150
+-----> rate:        2200
 -----> wallet:      0x1C01d79740Fd9f3Eb2230e962728ecd196a5FaB1
 -----> cap:         1.13997e+26
 -----> waves caps:  [ 37999000, 75998000, 113997001 ]
@@ -38,25 +38,25 @@ Starting migrations...
 
    Replacing 'PurplecoinCrowdsale'
    -------------------------------
-   > transaction hash:    0x4a21c0356c92737c8329572b6a645f202e098d0ff95965bae6c8404e44691ee8
-   > Blocks: 4            Seconds: 68
-   > contract address:    0x396c9d1eF7A8552ea9589CA02c28B8A854Ab09b4
-   > block number:        8334562
-   > block timestamp:     1674074472
+   > transaction hash:    0x2b64da3fc3531853e5083d205fba022be6bd88cebaa0236f93be4f842feffdde
+   > Blocks: 1            Seconds: 20
+   > contract address:    0xAc022B14102cccCBc53C35951Cb15eA1fCA78262
+   > block number:        8364523
+   > block timestamp:     1674513300
    > account:             0xA772C025abf455E16c9E857c9C19Ba56AC032782
-   > balance:             0.168721288711184003
-   > gas used:            4658520 (0x471558)
+   > balance:             0.218576848811096243
+   > gas used:            4774037 (0x48d895)
    > gas price:           4.97447248 gwei
    > value sent:          0 ETH
-   > total cost:          0.0231736795375296 ETH
+   > total cost:          0.02374831567500176 ETH
 
------> Token Address 0x7759409A7DE1930869cE7Ea817D0aBA7b59356Ac
+-----> Token Address 0x4688F084Aa2D09f2674c69Ce585b07797f8001F4
    > Saving migration to chain.
    > Saving artifacts
    -------------------------------------
-   > Total cost:     0.0231736795375296 ETH
+   > Total cost:     0.02374831567500176 ETH
 
 Summary
 =======
 > Total deployments:   2
-> Final cost:          0.02436702563864672 ETH
+> Final cost:          0.02494166177611888 ETH

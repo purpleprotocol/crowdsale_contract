@@ -30,31 +30,27 @@ Starting migrations...
 
 2_deploy_contracts.js
 =====================
------> rate:        1150
+-----> rate:        2200
 -----> wallet:      0x130fCeAD624C57aB46EF073bd1a940ACF8Bf2c85
 -----> cap:         1.13997e+26
------> waves caps:  [ 37999000, 37999000, 37999000 ]
+-----> waves caps:  [ 37999000, 75998000, 113997001 ]
 -----> bonuses:     [ 200, 100, 0 ]
 
-   Deploying 'PurplecoinCrowdsale'
+   Replacing 'PurplecoinCrowdsale'
    -------------------------------
-   > transaction hash:    0x57d5014822a8cab34c860b06bdb6033f3b6ee3ffb0139752582d003abe383168
-   > Blocks: 3            Seconds: 32
-   > contract address:    0x8B4308607446a75396Ebf32DcEa58e451F023722
-   > block number:        16416178
-   > block timestamp:     1673833799
+   > transaction hash:    0xe3e99f4ff0a84a740d6866c13896668ba36c68691dbb713aea42edc90977c6ce
+   > Blocks: 24           Seconds: 300
+   > contract address:    0x05472194a45f67a9463A106C703b790D336bfE74
+   > block number:        16472909
+   > block timestamp:     1674517967
    > account:             0xA772C025abf455E16c9E857c9C19Ba56AC032782
-   > balance:             0.068186422544324609
-   > gas used:            4632355 (0x46af23)
-   > gas price:           13.89700439 gwei
+   > balance:             0.07280289469334176
+   > gas used:            4774037 (0x48d895)
+   > gas price:           13.7700439 gwei
    > value sent:          0 ETH
-   > total cost:          0.06437585777103845 ETH
+   > total cost:          0.0657386990702243 ETH
 
------> Token Address 0xC266e1fDf7A0C6494ABfbc534fB977b92C7F27d9
-   > Saving migration to chain.
-   > Saving artifacts
-   -------------------------------------
-   > Total cost:     0.06437585777103845 ETH
+-----> Token Address 0xcd849366C0E1A6EC404dD8e483019Da38b674DB3
 
 Summary
 =======

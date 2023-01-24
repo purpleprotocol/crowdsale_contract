@@ -21,10 +21,10 @@ module.exports = {
         },
         mainnet: {
             provider: () => {
-                return new PrivateKeyProvider(process.env.PRIVATE_KEY, "https://ethrpc.purpletechnologies.io")//'https://mainnet.infura.io/v3/' + process.env.INFURA_API_KEY)
+                return new PrivateKeyProvider(process.env.PRIVATE_KEY, 'https://mainnet.infura.io/v3/' + process.env.INFURA_API_KEY)
             },
             gas: 4780000,
-            gasPrice: 14797004390,
+            gasPrice: 13770043900,
             network_id: '1'
         }
     },
