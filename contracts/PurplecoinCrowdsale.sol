@@ -54,9 +54,6 @@ contract PurplecoinCrowdsale is Ownable {
     // Mapping of KYC authorisations
     mapping(address => bool) public kyc_authorised;
 
-    // Banned addresses
-    mapping(address => bool) public banned;
-
     // Mapping of Pending purchases 
     mapping(address => bool) public pending;
 
@@ -99,6 +96,9 @@ contract PurplecoinCrowdsale is Ownable {
     // Amount of wei raised
     uint256 public weiRaised;
 
+    // Minimum buy amount
+    uint256 public minBuy;
+
     /// @dev counter to allow mutex lock with only one SSTORE operation
     uint256 private _guardCounter;
 
@@ -106,15 +106,22 @@ contract PurplecoinCrowdsale is Ownable {
         wallet = _wallet;
         uint256 decimals = 10 ** 18; // 18 decimal places
         tokensCap = _coins * decimals;
-        _waveCaps[0] = _waveCaps[0] * decimals;
-        _waveCaps[1] = _waveCaps[1] * decimals;
-        _waveCaps[2] = _waveCaps[2] * decimals;
-        individualTokensCap = 50000 * decimals; // Max 50,000 XPU per person 
+        _waveCaps[0] = 37999000000000000000000000;
+        _waveCaps[1] = 75998000000000000000000000;
+        _waveCaps[2] = 113997001000000000000000000;
+        individualTokensCap = 500000000000000000000000; // Max 500,000 XPU per person 
+        minBuy = 10000000000000000; // 0.01 ETH min buy
         rate = _rate;
         token = createTokenContract();
         WAVE_CAPS = _waveCaps;
         WAVE_BONUSES = _waveBonuses;
-        setCrowdsaleStage(0);//set in pre Sale stage
+        setCrowdsaleStage(0); //set in pre Sale stage
+
+        // Init balances
+        _balances[0x25E320b95316bAA3d300155aD82A0aEBEE400E66] = 1821600000000000000000; // https://etherscan.io/tx/0x7ae5653adfdeb4f0ec8c7d1e3de11edbc84cac4c0a6fbf5141a9c49b5481497b
+
+        // Dev fund, 0.5% of the supply
+        _balances[0x130fCeAD624C57aB46EF073bd1a940ACF8Bf2c85] = 11399700000000000000000000;
 
         // The counter starts at one to prevent changing it from zero to a non-zero
         // value, which is a more expensive operation.
@@ -273,11 +280,6 @@ contract PurplecoinCrowdsale is Ownable {
         isFinalized = true;
     }
 
-    function ban(address _beneficiary) public onlyOwner {
-        require(!banned[_beneficiary]);
-        banned[_beneficiary] = true;
-    }
-
     function clearWeiInSettledEscrow() public onlyOwner {
         require(totalWeiInSettledEscrow > 0);
         wallet.transfer(totalWeiInSettledEscrow);
@@ -301,6 +303,24 @@ contract PurplecoinCrowdsale is Ownable {
     function updateRate(uint256 _rate) public onlyOwner {
         require(!isFinalized);
         rate = _rate;
+    }
+
+    /**
+     * @dev Update the minBuy
+     * @param _minBuy new minBuy
+     */
+    function updateMinBuy(uint256 _minBuy) public onlyOwner {
+        require(!isFinalized);
+        minBuy = _minBuy;
+    }
+
+    /**
+     * @dev Update the individualTokensCap
+     * @param _individualTokensCap new individualTokensCap
+     */
+    function updateIndividualTokensCap(uint256 _individualTokensCap) public onlyOwner {
+        require(!isFinalized);
+        individualTokensCap = _individualTokensCap;
     }
 
     // KYC
@@ -376,10 +396,7 @@ contract PurplecoinCrowdsale is Ownable {
         _processPurchase(_beneficiary, tokens);
         emit TokenPurchase(msg.sender, _beneficiary, kyc_authorised[_beneficiary], weiAmount, tokens);
 
-        _updatePurchasingState(_beneficiary, weiAmount);
-
         _forwardFunds(_beneficiary);
-        _postValidatePurchase(_beneficiary, weiAmount);
     }
 
     /**
@@ -399,40 +416,10 @@ contract PurplecoinCrowdsale is Ownable {
     {
         uint256 tokenAmount = _getTokenAmount(weiAmount);
         require(beneficiary != address(0));
-        require(_wei_raised_per_address[beneficiary].add(pending_wei[beneficiary]).add(weiAmount) >= 250000000000000000); // 0.25 ETH minimum purchase
+        require(_wei_raised_per_address[beneficiary].add(pending_wei[beneficiary]).add(weiAmount) >= minBuy);    // Min buy
         require(!isFinalized);
-        require(!banned[beneficiary]);
         require(_balances[beneficiary].add(pending_psats[beneficiary]).add(tokenAmount) <= individualTokensCap); // Individual cap
         require(tokenAmount.add(totalSoldPsats).add(totalPsatsInEscrow) <= tokensCap);                           // Sale cap
-    }
-
-    /**
-     * @dev Validation of an executed purchase. Observe state and use revert statements to undo rollback when valid conditions are not met.
-     * @param _beneficiary Address performing the token purchase
-     * @param _weiAmount Value in wei involved in the purchase
-     */
-    function _postValidatePurchase(
-        address _beneficiary,
-        uint256 _weiAmount
-    )
-        internal
-        view
-    {
-        // optional override
-    }
-
-    /**
-     * @dev Override for extensions that require an internal state to check for validity (current user contributions, etc.)
-     * @param _beneficiary Address receiving the tokens
-     * @param _weiAmount Value in wei involved in the purchase
-     */
-    function _updatePurchasingState(
-        address _beneficiary,
-        uint256 _weiAmount
-    )
-        internal
-    {
-        // optional override
     }
 
     /**

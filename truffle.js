@@ -16,15 +16,15 @@ module.exports = {
               return new PrivateKeyProvider(process.env.PRIVATE_KEY, 'https://goerli.infura.io/v3/' + process.env.INFURA_API_KEY)
             },
             network_id: '5', // eslint-disable-line camelcase
-            gas: 4780000,
-            gasPrice: 4974472480,
+            gas: 4804877,
+            gasPrice: 75745851663,
         },
         mainnet: {
             provider: () => {
                 return new PrivateKeyProvider(process.env.PRIVATE_KEY, 'https://mainnet.infura.io/v3/' + process.env.INFURA_API_KEY)
             },
-            gas: 4780000,
-            gasPrice: 13770043900,
+            gas: 4804877,
+            gasPrice: 20770043900,
             network_id: '1'
         }
     },
