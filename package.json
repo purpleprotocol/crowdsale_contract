@@ -49,6 +49,8 @@
     "babel-register": "^6.26.0",
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
-    "chai-bignumber": "^2.0.2"
+    "chai-bignumber": "^2.0.2",
+    "truffle-plugin-stdjsonin": "github:mhrsalehi/truffle-plugin-stdjsonin",
+    "truffle-plugin-verify": "^0.6.3"
   }
 }
